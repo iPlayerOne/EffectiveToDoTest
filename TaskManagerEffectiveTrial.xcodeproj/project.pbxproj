@@ -17,17 +17,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		309278982DA0122F00403288 /* EffectiveToDoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffectiveToDoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		309278B12DA0123100403288 /* EffectiveToDoTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveToDoTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		309278982DA0122F00403288 /* TaskManagerEffectiveTrial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagerEffectiveTrial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		309278B12DA0123100403288 /* TaskManagerEffectiveTrialTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagerEffectiveTrialTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		309278C32DA0123100403288 /* Exceptions for "TaskManagerEffectiveTrial" folder in "EffectiveToDoTest" target */ = {
+		309278C32DA0123100403288 /* Exceptions for "TaskManagerEffectiveTrial" folder in "TaskManagerEffectiveTrial" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				App/Info.plist,
 			);
-			target = 309278972DA0122F00403288 /* EffectiveToDoTest */;
+			target = 309278972DA0122F00403288 /* TaskManagerEffectiveTrial */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -35,7 +35,7 @@
 		3092789A2DA0122F00403288 /* TaskManagerEffectiveTrial */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				309278C32DA0123100403288 /* Exceptions for "TaskManagerEffectiveTrial" folder in "EffectiveToDoTest" target */,
+				309278C32DA0123100403288 /* Exceptions for "TaskManagerEffectiveTrial" folder in "TaskManagerEffectiveTrial" target */,
 			);
 			path = TaskManagerEffectiveTrial;
 			sourceTree = "<group>";
@@ -77,8 +77,8 @@
 		309278992DA0122F00403288 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				309278982DA0122F00403288 /* EffectiveToDoTest.app */,
-				309278B12DA0123100403288 /* EffectiveToDoTestTests.xctest */,
+				309278982DA0122F00403288 /* TaskManagerEffectiveTrial.app */,
+				309278B12DA0123100403288 /* TaskManagerEffectiveTrialTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,9 +86,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		309278972DA0122F00403288 /* EffectiveToDoTest */ = {
+		309278972DA0122F00403288 /* TaskManagerEffectiveTrial */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 309278C42DA0123100403288 /* Build configuration list for PBXNativeTarget "EffectiveToDoTest" */;
+			buildConfigurationList = 309278C42DA0123100403288 /* Build configuration list for PBXNativeTarget "TaskManagerEffectiveTrial" */;
 			buildPhases = (
 				309278942DA0122F00403288 /* Sources */,
 				309278952DA0122F00403288 /* Frameworks */,
@@ -101,16 +101,16 @@
 			fileSystemSynchronizedGroups = (
 				3092789A2DA0122F00403288 /* TaskManagerEffectiveTrial */,
 			);
-			name = EffectiveToDoTest;
+			name = TaskManagerEffectiveTrial;
 			packageProductDependencies = (
 			);
 			productName = EffectiveToDoTest;
-			productReference = 309278982DA0122F00403288 /* EffectiveToDoTest.app */;
+			productReference = 309278982DA0122F00403288 /* TaskManagerEffectiveTrial.app */;
 			productType = "com.apple.product-type.application";
 		};
-		309278B02DA0123100403288 /* EffectiveToDoTestTests */ = {
+		309278B02DA0123100403288 /* TaskManagerEffectiveTrialTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 309278C92DA0123100403288 /* Build configuration list for PBXNativeTarget "EffectiveToDoTestTests" */;
+			buildConfigurationList = 309278C92DA0123100403288 /* Build configuration list for PBXNativeTarget "TaskManagerEffectiveTrialTest" */;
 			buildPhases = (
 				309278AD2DA0123100403288 /* Sources */,
 				309278AE2DA0123100403288 /* Frameworks */,
@@ -124,11 +124,11 @@
 			fileSystemSynchronizedGroups = (
 				309278B42DA0123100403288 /* TaskManagerEffectiveTrialTests */,
 			);
-			name = EffectiveToDoTestTests;
+			name = TaskManagerEffectiveTrialTest;
 			packageProductDependencies = (
 			);
 			productName = EffectiveToDoTestTests;
-			productReference = 309278B12DA0123100403288 /* EffectiveToDoTestTests.xctest */;
+			productReference = 309278B12DA0123100403288 /* TaskManagerEffectiveTrialTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -164,8 +164,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				309278972DA0122F00403288 /* EffectiveToDoTest */,
-				309278B02DA0123100403288 /* EffectiveToDoTestTests */,
+				309278972DA0122F00403288 /* TaskManagerEffectiveTrial */,
+				309278B02DA0123100403288 /* TaskManagerEffectiveTrialTest */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +207,7 @@
 /* Begin PBXTargetDependency section */
 		309278B32DA0123100403288 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 309278972DA0122F00403288 /* EffectiveToDoTest */;
+			target = 309278972DA0122F00403288 /* TaskManagerEffectiveTrial */;
 			targetProxy = 309278B22DA0123100403288 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -222,7 +222,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M2L3X2RFT6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EffectiveToDoTest/App/Info.plist;
+				INFOPLIST_FILE = TaskManagerEffectiveTrial/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -248,7 +248,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M2L3X2RFT6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EffectiveToDoTest/App/Info.plist;
+				INFOPLIST_FILE = TaskManagerEffectiveTrial/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -322,6 +322,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = TaskManagerEffectiveTrial;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -378,6 +379,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = TaskManagerEffectiveTrial;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -390,7 +392,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M2L3X2RFT6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/TaskManagerEffectiveTrial/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = iKorobov.EffectiveToDoTestTests;
@@ -408,7 +412,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M2L3X2RFT6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/TaskManagerEffectiveTrial/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = iKorobov.EffectiveToDoTestTests;
@@ -432,7 +438,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		309278C42DA0123100403288 /* Build configuration list for PBXNativeTarget "EffectiveToDoTest" */ = {
+		309278C42DA0123100403288 /* Build configuration list for PBXNativeTarget "TaskManagerEffectiveTrial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				309278C52DA0123100403288 /* Debug */,
@@ -441,7 +447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		309278C92DA0123100403288 /* Build configuration list for PBXNativeTarget "EffectiveToDoTestTests" */ = {
+		309278C92DA0123100403288 /* Build configuration list for PBXNativeTarget "TaskManagerEffectiveTrialTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				309278CA2DA0123100403288 /* Debug */,

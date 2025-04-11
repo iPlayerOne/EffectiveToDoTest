@@ -1,0 +1,22 @@
+
+# Xcode
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.xcodeproj/project.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
+*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/xcuserdata
+*.xcworkspace/xcshareddata
+
+# macOS system files
+.DS_Store
+
+# Breakpoints
+*.xcuserdatad/xcdebugger/*
+*.xcuserdatad/xcschemes/*
+
+# SwiftPM & Derived Data
+.build/
+DerivedData/
+

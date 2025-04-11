@@ -61,7 +61,6 @@ final class TaskEditPresenterTest: XCTestCase {
         }
     }
 
-
     func test_viewDidLoad_showsInitialTask() {
         let task = TaskListEntity(id: 42, title: "Title", details: "Desc", date: "Now", isCompleted: false)
         let view = MockView()
@@ -79,15 +78,14 @@ final class TaskEditPresenterTest: XCTestCase {
         let presenter = TaskEditPresenterImpl(view: view, interactor: MockInteractor(), router: MockRouter(), task: nil)
         presenter.delegate = delegate
 
-        // Создаем ожидание, чтобы дождаться выполнения асинхронного кода
-        let expectation = self.expectation(description: "Wait for didFinishSaving to complete")
-        
+        let expectation = self.expectation(description: "Ожидание вызова didFinishSaving")
+
         presenter.didFinishSaving()
 
         DispatchQueue.main.async {
             expectation.fulfill()
         }
-        
+
         waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertTrue(view.didCloseCalled)
@@ -99,13 +97,15 @@ final class TaskEditPresenterTest: XCTestCase {
         let presenter = TaskEditPresenterImpl(view: view, interactor: MockInteractor(), router: MockRouter(), task: nil)
         let error = NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Something went wrong"])
 
-        let expectation = self.expectation(description: "Wait for didFail to complete")
+        let expectation = self.expectation(description: "Ожидание отображения ошибки")
+
         presenter.didFail(with: error)
         DispatchQueue.main.async {
             expectation.fulfill()
         }
+
         waitForExpectations(timeout: 1, handler: nil)
-        
+
         XCTAssertEqual(view.shownError, "Something went wrong")
     }
 

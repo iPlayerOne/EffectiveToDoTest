@@ -54,38 +54,6 @@ final class TaskEditPresenterImpl: TaskEditPresenter {
         }
     }
     
-//    func didTapBack(title: String?, description: String?) {
-//        let trimmedTitle = title?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-//        let trimmedDescription = description?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-//        
-//        if trimmedTitle.isEmpty && trimmedDescription.isEmpty {
-//            view?.close()
-//            return
-//        }
-//        
-//        if let task = task {
-//            // Режим редактирования
-//            if trimmedTitle.isEmpty {
-//                router.presentDiscardAlert { [weak self] confirmed in
-//                    if confirmed {
-//                        self?.view?.close()
-//                    }
-//                }
-//                return
-//            } else {
-//                interactor.updateTask(id: task.id, title: trimmedTitle, description: trimmedDescription)
-//            }
-//        } else {
-//            // Режим создания новой задачи
-//            if trimmedTitle.isEmpty {
-//                view?.showError("Заголовок зачем-то не может быть пустым 🤷‍♂️")
-//                return
-//            } else {
-//                interactor.createTask(title: trimmedTitle, description: trimmedDescription)
-//            }
-//        }
-//    }
-    
     func didFinishSaving() {
         DispatchQueue.main.async { [weak self] in
             self?.delegate?.didFinishEditingTask()

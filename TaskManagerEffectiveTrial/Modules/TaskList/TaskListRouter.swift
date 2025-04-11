@@ -28,7 +28,7 @@ final class TaskListRouterImpl: TaskListRouter {
     }
     
     func presentTaskEdit(from view:TaskListView, task: TaskListEntity?, delegate: TaskEditDelegate?) {
-        let controller = TaskEditRouterImpl.assembleModule(task: task, repository: dependencies.toDoRepository, delegate: delegate)
+        let controller = TaskEditRouterImpl.assembleModule(task: task, repository: dependencies.TaskRepository, delegate: delegate)
         navigationController?.pushViewController(controller, animated: true)
     }
     
