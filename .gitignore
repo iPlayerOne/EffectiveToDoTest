@@ -1,0 +1,11 @@
+
+# Xcode user data
+*.xcuserstate
+*.xcworkspace
+*.xccheckout
+*.xcscmblueprint
+*.xcsettings
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/xcschemes/*User*.xcscheme
+

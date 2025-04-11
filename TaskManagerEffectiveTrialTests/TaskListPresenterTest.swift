@@ -52,7 +52,7 @@ final class TaskListPresenterTest: XCTestCase {
         let router = MockTaskListRouter()
         let presenter = TaskListPresenterImpl(view: view, interactor: interactor, router: router)
         
-        presenter.didUpdateSearchQuery("   ") // Пустая строка после обрезки пробелов
+        presenter.didUpdateSearchQuery("   ") 
         
         XCTAssertTrue(interactor.didFetchTasks, "interactor.fetchTasks() должен быть вызван при пустом поисковом запросе")
         XCTAssertFalse(interactor.didSearchTasks, "interactor.searchTasks() не должен вызываться при пустом поисковом запросе")
@@ -91,7 +91,6 @@ final class TaskListPresenterTest: XCTestCase {
         let router = MockTaskListRouter()
         let presenter = TaskListPresenterImpl(view: view, interactor: interactor, router: router)
         
-        // Устанавливаем view, чтобы guard в презентере прошёл
         presenter.view = view
         
         presenter.didTapCreate()

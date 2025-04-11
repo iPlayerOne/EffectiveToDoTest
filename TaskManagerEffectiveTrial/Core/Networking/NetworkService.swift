@@ -5,6 +5,12 @@ protocol NetworkService {
 }
 
 final class NetworkServiceImpl: NetworkService {
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
     func request<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: endpoint) else {
             return completion(.failure(URLError(.badURL)))
@@ -13,7 +19,7 @@ final class NetworkServiceImpl: NetworkService {
         let request = URLRequest(url: url)
         
         DispatchQueue.global(qos: .background).async {
-            URLSession.shared.dataTask(with: request) { data, response, error in
+            self.session.dataTask(with: request) { data, response, error in
                 if let error = error {
                     return completion(.failure(error))
                 }

@@ -1,14 +1,12 @@
 import XCTest
 @testable import EffectiveToDoTest
 
-// MARK: - Мок презентера
 
 final class MockPresenter: TaskEditPresenter {
     var didFinishSavingCalled = false
     var didFailCalled = false
     var receivedError: Error?
     
-    // Методы, которые нам не нужны в тестах, оставим пустыми
     func viewDidLoad() { }
     func didTapBack(title: String?, details: String?) { }
     
@@ -22,7 +20,6 @@ final class MockPresenter: TaskEditPresenter {
     }
 }
 
-// MARK: - Тесты для интерактора
 
 final class TaskEditInteractorTest: XCTestCase {
     

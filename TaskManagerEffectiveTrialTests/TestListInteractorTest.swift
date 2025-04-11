@@ -2,17 +2,12 @@ import XCTest
 @testable import EffectiveToDoTest
 
 
-// MARK: - Тесты для TaskListInteractorImpl
-
 final class TaskListInteractorTest: XCTestCase {
     
-    // Установим небольшой timeout для ожидания асинхронных вызовов
     let timeout: TimeInterval = 1.0
     
-    // Пример локальной задачи для fetchLocalTodos
     let sampleLocalTask = TaskListEntity(id: 1, title: "Local Task", details: "Description", date: "Now", isCompleted: false)
     
-    // Тест, когда это НЕ первый запуск: сразу вызывается fetchLocalTodos
     func test_fetchTasks_notFirstLaunch_success() {
         let repository = MockToDoRepository()
         repository.fetchLocalTodosResult = .success([sampleLocalTask])
@@ -37,14 +32,12 @@ final class TaskListInteractorTest: XCTestCase {
         XCTAssertFalse(launchManager.didMarkLaunched, "Если не первый запуск, markAppLaunched не должен вызываться")
     }
     
-    // Тест, когда это первый запуск: интерактор должен выполнить refreshData через fetchRemoteTodos, saveTodos, а затем fetchLocalTodos, и вызвать markAppLaunched
+ 
     func test_fetchTasks_firstLaunch_success() {
         let repository = MockToDoRepository()
-        // Задаём результат для fetchRemoteTodos: например, удалённая задача (используем ToDo, как определено в проекте)
         let remoteToDo = TaskItem(id: 100, todo: "Remote Task", completed: false, userId: 10)
         repository.fetchRemoteTodosResult = .success([remoteToDo])
         repository.saveTodosResult = .success(())
-        // После сохранения удалённых задач, возвращаем локальную задачу
         repository.fetchLocalTodosResult = .success([sampleLocalTask])
         
         let launchManager = MockLaunchManager(isFirstLaunch: true)
@@ -56,7 +49,6 @@ final class TaskListInteractorTest: XCTestCase {
         
         interactor.fetchTasks()
         
-        // Для тестирования цепочки (fetchRemoteTodos -> saveTodos -> fetchLocalTodos) даём немного больше времени
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             refreshExpectation.fulfill()
         }
@@ -68,7 +60,6 @@ final class TaskListInteractorTest: XCTestCase {
         XCTAssertEqual(presenter.loadedTasks?.count, 1, "Должна быть возвращена 1 локальная задача")
     }
     
-    // Тест успешного toggleTask, где после обновления задачи вызывается fetchLocalTodos
     func test_toggleTask_success() {
         let repository = MockToDoRepository()
         repository.updateTaskResult = .success(())
@@ -93,7 +84,6 @@ final class TaskListInteractorTest: XCTestCase {
         XCTAssertFalse(presenter.didFailCalled, "При успешном toggleTask presenter.didFail не должен вызываться")
     }
     
-    // Тест ошибки при удалении задачи: если deleteTask возвращает ошибку, интерактор должен вызвать presenter.didFail
     func test_deleteTask_failure() {
         let repository = MockToDoRepository()
         let sampleError = NSError(domain: "Test", code: 404, userInfo: [NSLocalizedDescriptionKey: "Task not found"])

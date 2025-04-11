@@ -5,7 +5,7 @@ final class AppDependency {
     let networkService = NetworkServiceImpl()
     let userDefaults = UserDefaultsManagerImpl()
     
-    lazy var toDoRepository = TaskRepositoryImpl(
+    lazy var TaskRepository = TaskRepositoryImpl(
         networkService: networkService,
         coreData: coreDataManager
     )

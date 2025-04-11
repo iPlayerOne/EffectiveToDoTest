@@ -3,7 +3,6 @@ import UIKit
 import XCTest
 @testable import EffectiveToDoTest
 
-// MARK: - Мок для ToDoRepository
 
 final class MockToDoRepository: TaskRepository {
     var fetchRemoteTodosResult: Result<[TaskItem], Error>?
@@ -85,7 +84,6 @@ final class MockToDoRepository: TaskRepository {
     }
 }
 
-// MARK: - Мок для LaunchManager
 
 final class MockLaunchManager: LaunchManager {
     var isFirstLaunch: Bool
@@ -101,7 +99,6 @@ final class MockLaunchManager: LaunchManager {
     }
 }
 
-// MARK: - Моки для модуля TaskEdit
 
 final class MockTaskEditPresenter: TaskEditPresenter {
     var didFinishSavingCalled = false
@@ -156,7 +153,6 @@ final class MockTaskEditInteractor: TaskEditInteractor {
     }
     
     func updateTask(id: UUID, title: String, description: String?) {
-        // Не используется в тестах
     }
 }
 
@@ -180,8 +176,6 @@ final class MockTaskEditDelegate: TaskEditDelegate {
         didFinish = true
     }
 }
-
-// MARK: - Моки для модуля TaskList
 
 final class MockTaskListView: TaskListView {
     var didShowLoading = false

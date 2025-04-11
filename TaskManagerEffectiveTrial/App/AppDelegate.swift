@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navController = UINavigationController()
         let rootVC = TaskListRouterImpl.assembleModule(
-                    repository: dependencies.toDoRepository,
+                    repository: dependencies.TaskRepository,
                     launchManager: dependencies.launchManager,
                     appDependency: dependencies,
                     navigationController: navController
