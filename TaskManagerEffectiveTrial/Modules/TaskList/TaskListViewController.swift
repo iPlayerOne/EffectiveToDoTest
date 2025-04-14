@@ -20,6 +20,7 @@ final class TaskListViewController: UIViewController, TaskListView {
     }()
     
     private let footerView = TaskListFooterView()
+    private var footerHeight: NSLayoutConstraint?
     
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
@@ -32,6 +33,7 @@ final class TaskListViewController: UIViewController, TaskListView {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.overrideUserInterfaceStyle = .dark
+        
         setupIndicator()
         setupNavBar()
         setupTableView()
@@ -40,18 +42,27 @@ final class TaskListViewController: UIViewController, TaskListView {
         presenter?.viewDidLoad()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let bottomInset: CGFloat = view.safeAreaInsets.bottom
+        footerHeight?.constant = 49 + bottomInset
+        
+    }
+    
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.register(TaskCell.self, forCellReuseIdentifier: TaskCell.reusedID)
-        tableView.backgroundColor = .clear
+        tableView.separatorColor = .separator
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -60,6 +71,7 @@ final class TaskListViewController: UIViewController, TaskListView {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = .systemBackground
         navigationItem.title = "Задачи"
+        
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
@@ -69,11 +81,12 @@ final class TaskListViewController: UIViewController, TaskListView {
         view.addSubview(footerView)
         footerView.translatesAutoresizingMaskIntoConstraints = false
         
+        footerHeight = footerView.heightAnchor.constraint(equalToConstant: 83)
+        footerHeight?.isActive = true
         NSLayoutConstraint.activate([
             footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            footerView.heightAnchor.constraint(equalToConstant: 83)
+            footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         footerView.updateCount(tasks.count)
@@ -127,10 +140,6 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: task)
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

@@ -42,11 +42,11 @@ final class TaskListFooterView: UIView {
         createButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            countLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            countLabel.centerYAnchor.constraint(equalTo: createButton.centerYAnchor),
-            
+            createButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             createButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            createButton.bottomAnchor.constraint(equalTo:  safeAreaLayoutGuide.bottomAnchor)
+            
+            countLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            countLabel.centerYAnchor.constraint(equalTo: createButton.centerYAnchor)
         ])
     }
     

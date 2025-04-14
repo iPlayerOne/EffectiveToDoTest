@@ -42,7 +42,7 @@ final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
         detailsView.delegate = self
         setupLayout()
         presenter?.viewDidLoad()
