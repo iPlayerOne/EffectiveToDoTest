@@ -28,7 +28,7 @@ final class TaskEditInteractorImpl: TaskEditInteractor {
         repository.updateTask(
             taskId: id,
             newTitle: title,
-            newDecription: details,
+            newDescription: details,
             newDate: nil,
             newCompleted: nil
         ) { [weak self] result in

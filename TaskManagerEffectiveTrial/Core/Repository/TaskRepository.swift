@@ -10,7 +10,7 @@ protocol TaskRepository {
     func createTask(title: String, details: String?, date: Date?, completion: @escaping (Result<Void, Error>) -> Void)
     func updateTask(taskId: Int64,
                     newTitle: String?,
-                    newDecription: String?,
+                    newDescription: String?,
                     newDate: Date?,
                     newCompleted: Bool?,
                     completion: @escaping (Result<Void, Error>) -> Void)
@@ -138,7 +138,7 @@ final class TaskRepositoryImpl: TaskRepository {
         }
     }
     
-    func updateTask(taskId: Int64, newTitle: String?, newDecription: String?, newDate: Date?, newCompleted: Bool?, completion: @escaping (Result<Void,Error>) -> Void) {
+    func updateTask(taskId: Int64, newTitle: String?, newDescription: String?, newDate: Date?, newCompleted: Bool?, completion: @escaping (Result<Void,Error>) -> Void) {
         coreData.performBackgroundTask { context in
             let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
             request.predicate = NSPredicate(format: "id == %lld", taskId)
@@ -154,7 +154,7 @@ final class TaskRepositoryImpl: TaskRepository {
                 }
                 
                 taskEntity.title = newTitle ?? taskEntity.title
-                taskEntity.details = newDecription ?? taskEntity.details
+                taskEntity.details = newDescription ?? taskEntity.details
                 taskEntity.createdAt = newDate ?? taskEntity.createdAt
                 taskEntity.isCompleted = newCompleted ?? taskEntity.isCompleted
                 

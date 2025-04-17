@@ -42,7 +42,7 @@ final class TaskListInteractorImpl: TaskListInteractor {
         repository.updateTask(
             taskId: taskId,
             newTitle: nil,
-            newDecription: nil,
+            newDescription: nil,
             newDate: nil,
             newCompleted: newCompleted) { [weak self] result in
                 switch result {

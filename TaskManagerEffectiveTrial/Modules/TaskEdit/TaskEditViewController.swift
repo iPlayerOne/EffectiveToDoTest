@@ -4,7 +4,6 @@ import UIKit
 protocol TaskEditView: AnyObject {
     func showTask(_ task: TaskListEntity?)
     func showError(_ message: String)
-    func close()
 }
 
 final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDelegate {
@@ -27,8 +26,9 @@ final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDe
         textView.textColor = .label
         textView.backgroundColor = .systemBackground
         textView.autocorrectionType = .no
+        textView.isScrollEnabled = true
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainer.heightTracksTextView = true
+        
         return textView
     }()
 
@@ -44,6 +44,7 @@ final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDe
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         detailsView.delegate = self
+        
         setupLayout()
         presenter?.viewDidLoad()
     }
@@ -76,9 +77,6 @@ final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDe
         present(alert, animated: true)
     }
 
-    func close() {
-        navigationController?.popViewController(animated: true)
-    }
 
     private func setupLayout() {
         view.addSubview(titleField)
@@ -97,7 +95,7 @@ final class TaskEditViewController: UIViewController, TaskEditView, UITextViewDe
             detailsView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16),
             detailsView.leadingAnchor.constraint(equalTo: titleField.leadingAnchor),
             detailsView.trailingAnchor.constraint(equalTo: titleField.trailingAnchor),
-            detailsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            detailsView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -16)
         ])
     }
 

@@ -12,8 +12,9 @@ protocol TaskEditDelegate: AnyObject {
 }
 
 final class TaskEditPresenterImpl: TaskEditPresenter {
-    weak var view: TaskEditView?
     weak var delegate: TaskEditDelegate?
+    
+    private weak var view: TaskEditView?
     private let interactor: TaskEditInteractor
     private let router: TaskEditRouter
     private let task: TaskListEntity?
@@ -34,30 +35,23 @@ final class TaskEditPresenterImpl: TaskEditPresenter {
     }
     
     func didTapBack(title: String?, details: String?) {
-        let trimmedTitle = title?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let trimmedDescription = details?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-
-        if trimmedTitle.isEmpty && trimmedDescription.isEmpty {
-            view?.close()
-            return
-        }
-
-        if trimmedTitle.isEmpty {
-            view?.showError("Заголовок зачем-то не может быть пустым 🤷‍♂️")
-            return
-        }
-
+        let title = title?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let details = details?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        
+        guard validate(title, details) else { return }
+        
         if let task = task {
-            interactor.updateTask(id: task.id, title: trimmedTitle, details: trimmedDescription)
+            interactor.updateTask(id: task.id, title: title, details: details)
         } else {
-            interactor.createTask(title: trimmedTitle, details: trimmedDescription)
+            interactor.createTask(title: title, details: details)
         }
     }
     
     func didFinishSaving() {
         DispatchQueue.main.async { [weak self] in
-            self?.delegate?.didFinishEditingTask()
-            self?.view?.close()
+            guard let self = self, let view = self.view else { return }
+            self.delegate?.didFinishEditingTask()
+            self.router.close(from: view)
         }
     }
     
@@ -65,6 +59,19 @@ final class TaskEditPresenterImpl: TaskEditPresenter {
         DispatchQueue.main.async { [weak self] in
             self?.view?.showError(error.localizedDescription)
         }
+    }
+    
+    private func validate(_ title: String, _ details: String) -> Bool {
+        if title.isEmpty && details.isEmpty {
+            if let view = view { router.close(from: view) }
+            return false
+        }
+        
+        guard !title.isEmpty else {
+            view?.showError("Заголовок зачем-то не может быть пустым 🤷‍♂️")
+            return false
+        }
+        return true
     }
 }
 
